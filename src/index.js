@@ -7,18 +7,18 @@ class Ship {
   setLength() {
     const newArray = [];
     for (let i = 0; i < this.length; i++) {
-      newArray.push("O");
+      newArray.push('O');
     }
     return newArray;
   }
 
   hit(num) {
-    this.hits[num - 1] = "X";
+    this.hits[num - 1] = 'X';
   }
 
   isSunk() {
-    return this.hits.every((e) => e === "X");
+    return this.hits.every((e) => e === 'X');
   }
 }
 
-const ship = new Ship(5);
+export { Ship };
