@@ -21,4 +21,8 @@ class Ship {
   }
 }
 
+class GameBoard {
+  
+}
+
 export { Ship };
