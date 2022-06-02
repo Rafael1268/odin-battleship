@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
-import { Ship } from './index';
+import './ship';
+import './gameboard';
 
 test('Ship length', () => {
   const ship = new Ship(4);
