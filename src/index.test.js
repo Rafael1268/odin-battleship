@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-import './ship';
-import './gameboard';
+import Ship from './ship';
+import GameBoard from './gameboard';
 
 test('Ship length', () => {
   const ship = new Ship(4);
@@ -16,4 +16,38 @@ test('Ship hits 2', () => {
   const ship = new Ship(3);
   ship.hit(2);
   expect(ship.hits).toEqual(['O', 'X', 'O']);
+});
+
+test('Place ship from B2 to B6', () => {
+  const gameBoard = new GameBoard();
+  gameBoard.place('B2', 'B6');
+  expect(gameBoard.board).toEqual([
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'O', 'O', 'O', 'O', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+  ]);
+});
+
+test('Place ship from B2 to D2', () => {
+  const gameBoard = new GameBoard();
+  gameBoard.place('B2', 'D2');
+  expect(gameBoard.board).toEqual([
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'O', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'O', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'O', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+  ]);
 });
