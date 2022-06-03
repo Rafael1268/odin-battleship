@@ -23,7 +23,7 @@ test('Place ship from B2 to B6', () => {
   gameBoard.place('B2', 'B6');
   expect(gameBoard.board).toEqual([
     ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
-    ['E', 'O', 'O', 'O', 'O', 'E', 'E', 'E', 'E', 'E'],
+    ['E', '1', '1', '1', '1', 'E', 'E', 'E', 'E', 'E'],
     ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
     ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
     ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
@@ -40,9 +40,27 @@ test('Place ship from B2 to D2', () => {
   gameBoard.place('B2', 'D2');
   expect(gameBoard.board).toEqual([
     ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
-    ['E', 'O', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
-    ['E', 'O', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
-    ['E', 'O', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', '1', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', '1', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', '1', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+  ]);
+});
+
+test('Hit C3', () => {
+  const gameBoard = new GameBoard();
+  gameBoard.place('B2', 'D2');
+  gameBoard.receiveAttack('C2');
+  expect(gameBoard.board).toEqual([
+    ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', '1', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'X', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', '1', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
     ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
     ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
     ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
