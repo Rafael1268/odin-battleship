@@ -69,3 +69,10 @@ test('Hit C3', () => {
     ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
   ]);
 });
+
+test('Hit C3', () => {
+  const gameBoard = new GameBoard();
+  gameBoard.place('B2', 'D2');
+  gameBoard.receiveAttack('C2');
+  expect(gameBoard.ships[0][2].hits).toEqual(['O', 'X', 'O']);
+});

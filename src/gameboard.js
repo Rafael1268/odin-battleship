@@ -53,6 +53,16 @@ class GameBoard {
     const splitCoord = coord.split('');
     const letter = letters.indexOf(splitCoord[0]);
     if (this.board[letter][splitCoord[1] - 1] === 'E') return false;
+    const hitSpot = this.ships.find((e) => {
+      if (e[3] === this.board[letter][splitCoord[1] - 1]) return true;
+      return false;
+    });
+    if (hitSpot[0].split('')[1] === hitSpot[1].split('')[1]) {
+      const letter1 = letters.indexOf(hitSpot[0].split('')[0]);
+      hitSpot[2].hit(letter - letter1 + 1);
+    } else {
+      hitSpot[2].hit(splitCoord[1] - hitSpot[0] + 1);
+    }
     this.board[letter][splitCoord[1] - 1] = 'X';
     return true;
   }
