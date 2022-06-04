@@ -4,6 +4,7 @@ class Ship {
     this.hits = this.setLength();
   }
 
+  // Create an array to keep track of hits
   setLength() {
     const newArray = [];
     for (let i = 0; i < this.length; i++) {
@@ -12,10 +13,12 @@ class Ship {
     return newArray;
   }
 
+  // Mark a spot hit
   hit(num) {
     this.hits[num - 1] = 'X';
   }
 
+  // Check if the ship has sunk
   isSunk() {
     return this.hits.every((e) => e === 'X');
   }
