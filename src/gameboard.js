@@ -18,6 +18,7 @@ class GameBoard {
     this.shipNum = 1;
   }
 
+  // Place ship on board and add ship info to the ships array
   place(coord1, coord2) {
     const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     const splitCoord1 = coord1.split('');
@@ -48,6 +49,7 @@ class GameBoard {
     this.shipNum++;
   }
 
+  // Check if an attack hits a ship, if true mark the ship hit
   receiveAttack(coord) {
     const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     const splitCoord = coord.split('');
