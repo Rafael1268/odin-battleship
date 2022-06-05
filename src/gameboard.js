@@ -71,6 +71,13 @@ class GameBoard {
     this.board[letter][splitCoord[1] - 1] = 'X';
     return true;
   }
+
+  shipsSunk() {
+    const test = (e) => e[2].isSunk();
+    const check = this.ships.every(test);
+    if (check) return true;
+    return false;
+  }
 }
 
 export default GameBoard;

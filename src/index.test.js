@@ -77,3 +77,24 @@ test('Hit C2', () => {
   gameBoard.receiveAttack('C2');
   expect(gameBoard.ships[0][2].hits).toEqual(['O', 'X', 'O']);
 });
+
+test('Check if all ships are sunk 1', () => {
+  const gameBoard = new GameBoard();
+  gameBoard.place('B2', 'D2');
+  gameBoard.place('A6', 'E6');
+  gameBoard.receiveAttack('B6');
+  expect(gameBoard.shipsSunk()).toEqual(false);
+});
+
+test('Check if all ships are sunk 2', () => {
+  const gameBoard = new GameBoard();
+  gameBoard.place('B2', 'D2');
+  gameBoard.place('A6', 'C6');
+  gameBoard.receiveAttack('B2');
+  gameBoard.receiveAttack('C2');
+  gameBoard.receiveAttack('D2');
+  gameBoard.receiveAttack('A6');
+  gameBoard.receiveAttack('B6');
+  gameBoard.receiveAttack('C6');
+  expect(gameBoard.shipsSunk()).toEqual(true);
+});
