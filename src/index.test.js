@@ -52,14 +52,15 @@ test('Place ship from B2 to D2', () => {
   ]);
 });
 
-test('Hit C3', () => {
+test('Hit C2 and C3', () => {
   const gameBoard = new GameBoard();
   gameBoard.place('B2', 'D2');
   gameBoard.receiveAttack('C2');
+  gameBoard.receiveAttack('C3');
   expect(gameBoard.board).toEqual([
     ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
     ['E', '1', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
-    ['E', 'X', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+    ['E', 'X', 'O', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
     ['E', '1', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
     ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
     ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
@@ -70,7 +71,7 @@ test('Hit C3', () => {
   ]);
 });
 
-test('Hit C3', () => {
+test('Hit C2', () => {
   const gameBoard = new GameBoard();
   gameBoard.place('B2', 'D2');
   gameBoard.receiveAttack('C2');
