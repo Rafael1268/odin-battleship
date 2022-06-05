@@ -72,6 +72,7 @@ class GameBoard {
     return true;
   }
 
+  // Check if all ships have been sunk
   shipsSunk() {
     const test = (e) => e[2].isSunk();
     const check = this.ships.every(test);
