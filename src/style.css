@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
+:root {
+  --background-c: rgb(255, 255, 255);
+  --background-d-c: rgb(221, 221, 221);
+  --text-c: rgb(120, 120, 120);
+  --defender-c: rgb(43, 121, 255);
+  --defender-l-c: rgb(153, 189, 251);
+  --attacker-c: rgb(248, 61, 61);
+  --attacker-l-c: rgb(249, 153, 153);
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+  color: var(--white-c);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  border-radius: 10px;
+  font-size: 2rem;
+  color: var(--background-c);
+  text-align: center;
+  width: 350px;
+  padding: 10px 0;
+}
+
+#player {
+  background-color: var(--defender-c);
+}
+
+#computer {
+  background-color: var(--attacker-c);
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.player,
+.computer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 50vw;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(11, 40px);
+  grid-template-rows: repeat(11, 40px);
+  gap: 8px;
+}
+
+.grid {
+  background-color: var(--background-d-c);
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+}
+
+.gridS {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1.4rem;
+  color: var(--text-c);
+}
