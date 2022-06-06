@@ -54,9 +54,10 @@ class GameBoard {
     const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     const splitCoord = coord.split('');
     const letter = letters.indexOf(splitCoord[0]);
+    if (this.board[letter][splitCoord[1] - 1] === 'X') return false;
     if (this.board[letter][splitCoord[1] - 1] === 'E') {
       this.board[letter][splitCoord[1] - 1] = 'O';
-      return false;
+      return true;
     }
     const hitSpot = this.ships.find((e) => {
       if (e[3] === this.board[letter][splitCoord[1] - 1]) return true;
