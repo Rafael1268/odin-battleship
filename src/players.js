@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable class-methods-use-this */
 import { computerBoard, playerBoard } from './index';
 
@@ -9,6 +10,7 @@ class Player {
     this.id = id;
   }
 
+  // Switches whos turn it is
   turn() {
     if (playTurn === 0) {
       playTurn = 1;
@@ -17,6 +19,7 @@ class Player {
     }
   }
 
+  // Checks whos turn it is
   checkTurn() {
     if (playTurn === this.id) {
       return true;
@@ -24,6 +27,7 @@ class Player {
     return false;
   }
 
+  // Attacks a spot on the board
   attack(e) {
     if (this.type === 'player') {
       const status = computerBoard.receiveAttack(e.target.id);
