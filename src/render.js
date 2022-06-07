@@ -27,6 +27,26 @@ function render() {
     num1++;
     num2 = 1;
   });
+  num1 = 0;
+  num2 = 1;
+  computerBoard.board.forEach((row) => {
+    row.forEach((grid) => {
+      const gridS = document.getElementById(`E${letters[num1]}${num2}`);
+      switch (grid) {
+        case 'O':
+          gridS.style.backgroundColor = 'var(--defender-l-c';
+          break;
+        case 'X':
+          gridS.style.backgroundColor = 'var(--defender-c';
+          break;
+        default:
+          break;
+      }
+      num2++;
+    });
+    num1++;
+    num2 = 1;
+  });
 }
 
 export default render;
