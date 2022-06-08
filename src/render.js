@@ -31,7 +31,7 @@ function render() {
   num2 = 1;
   computerBoard.board.forEach((row) => {
     row.forEach((grid) => {
-      const gridS = document.getElementById(`E${letters[num1]}${num2}`);
+      const gridS = document.getElementById(`X${letters[num1]}${num2}`);
       switch (grid) {
         case 'O':
           gridS.style.backgroundColor = 'var(--defender-l-c';
