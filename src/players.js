@@ -41,9 +41,7 @@ class Player {
   // Attacks a spot on the board
   attack(e) {
     if (this.type === 'player') {
-      const status = computerBoard.receiveAttack(e.target.id);
-      if (status) return;
-      this.attack(e);
+      computerBoard.receiveAttack(e.target.id);
     } else {
       const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
       const randLetter = Math.floor(Math.random() * 9);
