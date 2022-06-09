@@ -26,6 +26,15 @@ h1 {
   padding: 10px 0;
 }
 
+h2 {
+  font-size: 4rem;
+}
+
+p {
+  font-size: 1.5rem;
+  color: var(--text-c);
+}
+
 #player {
   border: 4px solid var(--defender-c);
   background-color: var(--background-c);
@@ -75,4 +84,28 @@ h1 {
   height: 40px;
   font-size: 1.4rem;
   color: var(--text-c);
+}
+
+.screen {
+  background-color: var(--background-d-c);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+}
+
+.hide {
+  display: none;
+}
+
+#won h2 {
+  color: var(--defender-c);
+}
+
+#lost h2 {
+  color: var(--attacker-c);
 }
