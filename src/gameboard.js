@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import Ship from './ship';
 
 class GameBoard {
@@ -21,8 +22,8 @@ class GameBoard {
   // Place ship on board and add ship info to the ships array
   place(coord1, coord2) {
     const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-    const splitCoord1 = coord1.split('');
-    const splitCoord2 = coord2.split('');
+    const splitCoord1 = [coord1.slice(0, 1), coord1.slice(1, 3)];
+    const splitCoord2 = [coord2.slice(0, 1), coord2.slice(1, 3)];
     const letter1 = letters.indexOf(splitCoord1[0]);
     const letter2 = letters.indexOf(splitCoord2[0]);
     if (letter2 - letter1 === 0) {
@@ -43,7 +44,7 @@ class GameBoard {
     for (let i = 0; i < letter2 - letter1 + 1; i++) {
       this.board[letter1 + i][splitCoord1[1] - 1] = `${this.shipNum}`;
     }
-    for (let i = 0; i < splitCoord2[1] - splitCoord1[1]; i++) {
+    for (let i = 0; i < splitCoord2[1] - splitCoord1[1] + 1; i++) {
       this.board[letter1][splitCoord1[1] - 1 + i] = `${this.shipNum}`;
     }
     this.shipNum++;
@@ -51,8 +52,14 @@ class GameBoard {
 
   // Check if an attack hits a ship, if true mark the ship hit
   receiveAttack(coord) {
+    let coordsToSplit;
+    if (coord.startsWith('X')) {
+      coordsToSplit = coord.slice(1);
+    } else {
+      coordsToSplit = coord;
+    }
     const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-    const splitCoord = coord.split('');
+    const splitCoord = [coordsToSplit.slice(0, 1), coordsToSplit.slice(1, 3)];
     const letter = letters.indexOf(splitCoord[0]);
     if (this.board[letter][splitCoord[1] - 1] === 'X') return false;
     if (this.board[letter][splitCoord[1] - 1] === 'E') {
