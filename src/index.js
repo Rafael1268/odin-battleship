@@ -42,7 +42,8 @@ enemyGrid.addEventListener('click', () => {
   player.attack(event);
   const won = computerBoard.shipsSunk();
   if (won) {
-    console.log('You won!');
+    const winScreen = document.getElementById('won');
+    winScreen.classList.remove('hide');
     return;
   }
   render();
@@ -54,7 +55,8 @@ enemyGrid.addEventListener('click', () => {
   setTimeout(() => {
     const lost = playerBoard.shipsSunk();
     if (lost) {
-      console.log('!You lost');
+      const lostScreen = document.getElementById('lost');
+      lostScreen.classList.remove('hide');
       return;
     }
     player.turn();
