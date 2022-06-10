@@ -23,6 +23,7 @@ h1 {
   font-size: 2rem;
   text-align: center;
   width: 350px;
+  margin: 35px 0;
   padding: 10px 0;
 }
 
@@ -57,7 +58,6 @@ p {
 .computer {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   width: 50vw;
 }
@@ -108,4 +108,11 @@ p {
 
 #lost h2 {
   color: var(--attacker-c);
+}
+
+@media (max-width: 1040px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
