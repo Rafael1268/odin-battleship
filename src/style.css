@@ -146,7 +146,6 @@ select {
   border: 2px solid var(--defender-c);
   font-size: 1.4rem;
   color: var(--defender-c);
-  margin: 0 -1px;
   margin-bottom: 5px;
   padding: 5px 10px;
 }
@@ -156,6 +155,7 @@ select {
   border-top-right-radius: 0;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 0;
+  border-right-width: 1px;
 }
 
 #numberSelect {
@@ -163,6 +163,7 @@ select {
   border-top-right-radius: 5px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 5px;
+  border-left-width: 1px;
 }
 
 .hide {
