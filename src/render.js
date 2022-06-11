@@ -11,12 +11,16 @@ function render() {
       const gridS = document.getElementById(`${letters[num1]}${num2}`);
       switch (grid) {
         case 'E':
+          gridS.style.backgroundColor = 'var(--background-d-c)';
           break;
         case 'O':
           gridS.style.backgroundColor = 'var(--attacker-l-c)';
           break;
         case 'X':
           gridS.style.backgroundColor = 'var(--attacker-c';
+          break;
+        case 'N':
+          gridS.style.backgroundColor = 'var(--defender-l-c)';
           break;
         default:
           gridS.style.backgroundColor = 'var(--defender-c';
