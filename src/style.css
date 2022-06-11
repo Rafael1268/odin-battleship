@@ -6,6 +6,7 @@
   --text-c: rgb(120, 120, 120);
   --defender-c: rgb(43, 121, 255);
   --defender-l-c: rgb(153, 189, 251);
+  --defender-ll-c: rgb(205, 223, 255);
   --attacker-c: rgb(248, 61, 61);
   --attacker-l-c: rgb(249, 153, 153);
 }
@@ -34,6 +35,22 @@ h2 {
 p {
   font-size: 1.5rem;
   color: var(--text-c);
+}
+
+button {
+  background-color: var(--defender-ll-c);
+  font-size: 1.3rem;
+  color: var(--defender-c);
+  border: 2px solid var(--defender-c);
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 5px 25px;
+  transition: 0.1s;
+}
+
+button:hover {
+  background-color: var(--defender-c);
+  color: var(--background-c);
 }
 
 #player {
@@ -98,10 +115,6 @@ p {
   top: 0;
 }
 
-.hide {
-  display: none;
-}
-
 #won h2 {
   color: var(--defender-c);
 }
@@ -115,4 +128,43 @@ p {
     flex-direction: column;
     align-items: center;
   }
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectors {
+  display: flex;
+}
+
+select {
+  background-color: var(--defender-ll-c);
+  border: 2px solid var(--defender-c);
+  font-size: 1.4rem;
+  color: var(--defender-c);
+  margin: 0 -1px;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+}
+
+#letterSelect {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 0;
+}
+
+#numberSelect {
+  border-top-left-radius: 0;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 5px;
+}
+
+.hide {
+  display: none;
 }
