@@ -56,11 +56,6 @@ function createGame() {
   computerBoard.place('C1', 'C3');
   computerBoard.place('D1', 'D3');
   computerBoard.place('E1', 'E2');
-  playerBoard.place('A1', 'A5');
-  playerBoard.place('B1', 'B4');
-  playerBoard.place('C1', 'C3');
-  playerBoard.place('D1', 'D3');
-  playerBoard.place('E1', 'E2');
   player = new Player('player', 0);
   computer = new Player('computer', 1);
   const enemyGrid = document.querySelector('#enemyBoard');
@@ -70,20 +65,36 @@ function createGame() {
 }
 
 function newShip() {
+  let coord1 = `${letterSelect.value}${numberSelect.value}`;
   let coord2;
-  if (newRotation === 0) {
-    coord2 = `${letterSelect.value}${
-      Number(numberSelect.value) + newShips[newNumber] - 1
-    }`;
-  }
-  if (newRotation === 1) {
+  if (letterSelect.value === ' ' || numberSelect.value === ' ') {
+    coord1 = ' ';
+    coord2 = ' ';
+  } else if (newRotation === 0) {
+    if (Number(numberSelect.value) + newShips[newNumber] > 11) {
+      coord1 = ' ';
+      coord2 = ' ';
+      letterSelect.value = ' ';
+      numberSelect.value = ' ';
+    } else {
+      coord2 = `${letterSelect.value}${
+        Number(numberSelect.value) + newShips[newNumber] - 1
+      }`;
+    }
+  } else {
     const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     const letterI = letters.indexOf(letterSelect.value);
-    coord2 = `${letters[letterI + newShips[newNumber] - 1]}${
-      numberSelect.value
-    }`;
+    if (letterI + newShips[newNumber] > 10) {
+      coord1 = ' ';
+      coord2 = ' ';
+      letterSelect.value = ' ';
+      numberSelect.value = ' ';
+    } else {
+      coord2 = `${letters[letterI + newShips[newNumber] - 1]}${
+        numberSelect.value
+      }`;
+    }
   }
-  const coord1 = `${letterSelect.value}${numberSelect.value}`;
   playerBoard.preview(coord1, coord2);
   render();
 }
