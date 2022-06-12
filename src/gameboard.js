@@ -52,6 +52,29 @@ class GameBoard {
 
   // Shows a preview of a ship while placing
   preview(coord1, coord2) {
+    this.clearPreview();
+    // if (coord1 === ' ' || coord2 === ' ') return false;
+    const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+    const splitCoord1 = [coord1.slice(0, 1), coord1.slice(1, 3)];
+    const splitCoord2 = [coord2.slice(0, 1), coord2.slice(1, 3)];
+    const letter1 = letters.indexOf(splitCoord1[0]);
+    const letter2 = letters.indexOf(splitCoord2[0]);
+    if (splitCoord2[1] - splitCoord1[1] === 0) {
+      for (let i = 0; i < letter2 - letter1 + 1; i++) {
+        if (this.board[letter1 + i][splitCoord1[1] - 1] !== 'E') return false;
+        this.board[letter1 + i][splitCoord1[1] - 1] = 'N';
+      }
+    } else {
+      for (let i = 0; i < splitCoord2[1] - splitCoord1[1] + 1; i++) {
+        if (this.board[letter1][splitCoord1[1] - 1 + i] !== 'E') return false;
+        this.board[letter1][splitCoord1[1] - 1 + i] = 'N';
+      }
+    }
+    return true;
+  }
+
+  // Clears preview from board
+  clearPreview() {
     let rowNum = 0;
     this.board.forEach((row) => {
       const rowTest = (each) => each === 'E' || each === 'N';
@@ -68,18 +91,6 @@ class GameBoard {
       }
       rowNum++;
     });
-    if (coord1 === ' ' || coord2 === ' ') return;
-    const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-    const splitCoord1 = [coord1.slice(0, 1), coord1.slice(1, 3)];
-    const splitCoord2 = [coord2.slice(0, 1), coord2.slice(1, 3)];
-    const letter1 = letters.indexOf(splitCoord1[0]);
-    const letter2 = letters.indexOf(splitCoord2[0]);
-    for (let i = 0; i < letter2 - letter1 + 1; i++) {
-      this.board[letter1 + i][splitCoord1[1] - 1] = 'N';
-    }
-    for (let i = 0; i < splitCoord2[1] - splitCoord1[1] + 1; i++) {
-      this.board[letter1][splitCoord1[1] - 1 + i] = 'N';
-    }
   }
 
   // Check if an attack hits a ship, if true mark the ship hit
