@@ -130,7 +130,7 @@ function placeNewShip() {
   playerBoard.place(`${letterSelect.value}${numberSelect.value}`, coord2);
   newShip();
   newNumber++;
-  if (newNumber === 5) {
+  if (newNumber === newShips.length) {
     const controls = document.querySelector('.controls');
     controls.classList.add('hide');
     createGame();
