@@ -53,7 +53,6 @@ class GameBoard {
   // Shows a preview of a ship while placing
   preview(coord1, coord2) {
     this.clearPreview();
-    // if (coord1 === ' ' || coord2 === ' ') return false;
     const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     const splitCoord1 = [coord1.slice(0, 1), coord1.slice(1, 3)];
     const splitCoord2 = [coord2.slice(0, 1), coord2.slice(1, 3)];
