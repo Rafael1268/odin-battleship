@@ -22,6 +22,7 @@ const numberSelect = document.getElementById('numberSelect');
 const rotateBtn = document.getElementById('rotateBtn');
 const placeBtn = document.getElementById('placeBtn');
 
+// Attack computer board when player clicks on a grid
 function gridClick(event) {
   if (event.target.className !== 'grid') return;
   const turn = player.checkTurn();
@@ -50,6 +51,7 @@ function gridClick(event) {
   }, 1100);
 }
 
+// Creates game
 function createGame() {
   computerBoard.place('A1', 'A5');
   computerBoard.place('B1', 'B4');
@@ -64,6 +66,7 @@ function createGame() {
   player.turn();
 }
 
+// Previews ship while placing
 function newShip() {
   let coord1 = `${letterSelect.value}${numberSelect.value}`;
   let coord2;
@@ -108,6 +111,7 @@ function newShip() {
   render();
 }
 
+// Places ship on board
 function placeNewShip() {
   if (letterSelect.value === ' ' || numberSelect.value === ' ') return;
   playerBoard.clearPreview();
