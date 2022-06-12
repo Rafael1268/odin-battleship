@@ -15,6 +15,7 @@ let computer;
 
 let newRotation = 0;
 let newNumber = 0;
+let cNewNumber = 0;
 const newShips = [5, 4, 3, 3, 2];
 
 const letterSelect = document.getElementById('letterSelect');
@@ -51,13 +52,40 @@ function gridClick(event) {
   }, 1100);
 }
 
+// Adds random ship to computer board
+function computerShip() {
+  const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+  const randLetter = Math.floor(Math.random() * 9);
+  const randNumber = Math.floor(Math.random() * 9) + 1;
+  const randRotation = Math.floor(Math.random() * 2);
+  let coord2;
+  if (randRotation === 0) {
+    coord2 = `${letters[randLetter]}${randNumber + newShips[cNewNumber] - 1}`;
+  } else {
+    coord2 = `${letters[randLetter + newShips[cNewNumber] - 1]}${randNumber}`;
+  }
+  if (letters[randLetter + newShips[cNewNumber] - 1] === undefined) {
+    computerShip();
+    return;
+  }
+  if (randNumber + newShips[cNewNumber] - 1 > 10) {
+    computerShip();
+    return;
+  }
+  const computerStatus = computerBoard.checkClear(
+    `${letters[randLetter]}${randNumber}`,
+    coord2
+  );
+  if (computerStatus === false) {
+    computerShip();
+    return;
+  }
+  computerBoard.place(`${letters[randLetter]}${randNumber}`, coord2);
+  cNewNumber++;
+}
+
 // Creates game
 function createGame() {
-  computerBoard.place('A1', 'A5');
-  computerBoard.place('B1', 'B4');
-  computerBoard.place('C1', 'C3');
-  computerBoard.place('D1', 'D3');
-  computerBoard.place('E1', 'E2');
   player = new Player('player', 0);
   computer = new Player('computer', 1);
   const enemyGrid = document.querySelector('#enemyBoard');
@@ -140,6 +168,10 @@ function placeNewShip() {
 
 playerBoard = new GameBoard();
 computerBoard = new GameBoard();
+
+for (let i = 0; i < newShips.length; i++) {
+  computerShip();
+}
 
 letterSelect.addEventListener('change', () => newShip());
 numberSelect.addEventListener('change', () => newShip());
