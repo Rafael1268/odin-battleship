@@ -109,18 +109,33 @@ function newShip() {
 }
 
 function placeNewShip() {
+  if (letterSelect.value === ' ' || numberSelect.value === ' ') return;
+  playerBoard.clearPreview();
+  let coord2;
+  if (newRotation === 0) {
+    coord2 = `${letterSelect.value}${
+      Number(numberSelect.value) + newShips[newNumber] - 1
+    }`;
+  } else {
+    const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+    const letterI = letters.indexOf(letterSelect.value);
+    coord2 = `${letters[letterI + newShips[newNumber] - 1]}${
+      numberSelect.value
+    }`;
+  }
+  playerBoard.place(`${letterSelect.value}${numberSelect.value}`, coord2);
+  newShip();
   newNumber++;
   if (newNumber === 5) {
     const controls = document.querySelector('.controls');
     controls.classList.add('hide');
     createGame();
+    newShip();
   }
 }
 
 playerBoard = new GameBoard();
 computerBoard = new GameBoard();
-
-playerBoard.place('D3', 'D7');
 
 letterSelect.addEventListener('change', () => newShip());
 numberSelect.addEventListener('change', () => newShip());
