@@ -2,6 +2,7 @@
 /* eslint-disable no-undef */
 import { computerBoard, playerBoard } from './index';
 
+// Renders board
 function render() {
   const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
   let num1 = 0;
@@ -17,13 +18,13 @@ function render() {
           gridS.style.backgroundColor = 'var(--attacker-l-c)';
           break;
         case 'X':
-          gridS.style.backgroundColor = 'var(--attacker-c';
+          gridS.style.backgroundColor = 'var(--attacker-c)';
           break;
         case 'N':
           gridS.style.backgroundColor = 'var(--defender-l-c)';
           break;
         default:
-          gridS.style.backgroundColor = 'var(--defender-c';
+          gridS.style.backgroundColor = 'var(--defender-c)';
           break;
       }
       num2++;
@@ -38,10 +39,10 @@ function render() {
       const gridS = document.getElementById(`X${letters[num1]}${num2}`);
       switch (grid) {
         case 'O':
-          gridS.style.backgroundColor = 'var(--defender-l-c';
+          gridS.style.backgroundColor = 'var(--defender-l-c)';
           break;
         case 'X':
-          gridS.style.backgroundColor = 'var(--defender-c';
+          gridS.style.backgroundColor = 'var(--defender-c)';
           break;
         default:
           break;
