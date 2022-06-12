@@ -70,7 +70,9 @@ function newShip() {
   if (letterSelect.value === ' ' || numberSelect.value === ' ') {
     coord1 = ' ';
     coord2 = ' ';
-  } else if (newRotation === 0) {
+    return;
+  }
+  if (newRotation === 0) {
     if (Number(numberSelect.value) + newShips[newNumber] > 11) {
       coord1 = ' ';
       coord2 = ' ';
@@ -95,7 +97,14 @@ function newShip() {
       }`;
     }
   }
-  playerBoard.preview(coord1, coord2);
+  const previewStatus = playerBoard.preview(coord1, coord2);
+  if (previewStatus === false) {
+    playerBoard.clearPreview();
+    coord1 = ' ';
+    coord2 = ' ';
+    letterSelect.value = ' ';
+    numberSelect.value = ' ';
+  }
   render();
 }
 
@@ -111,6 +120,8 @@ function placeNewShip() {
 playerBoard = new GameBoard();
 computerBoard = new GameBoard();
 
+playerBoard.place('D3', 'D7');
+
 letterSelect.addEventListener('change', () => newShip());
 numberSelect.addEventListener('change', () => newShip());
 rotateBtn.addEventListener('click', () => {
@@ -123,6 +134,8 @@ rotateBtn.addEventListener('click', () => {
 });
 placeBtn.addEventListener('click', () => placeNewShip());
 
-newShip();
+render();
+letterSelect.value = ' ';
+numberSelect.value = ' ';
 
 export { computerBoard, playerBoard, computer };
