@@ -101,6 +101,8 @@ function newShip() {
   if (letterSelect.value === ' ' || numberSelect.value === ' ') {
     coord1 = ' ';
     coord2 = ' ';
+    playerBoard.clearPreview();
+    render();
     return;
   }
   if (newRotation === 0) {
@@ -109,11 +111,13 @@ function newShip() {
       coord2 = ' ';
       letterSelect.value = ' ';
       numberSelect.value = ' ';
-    } else {
-      coord2 = `${letterSelect.value}${
-        Number(numberSelect.value) + newShips[newNumber] - 1
-      }`;
+      playerBoard.clearPreview();
+      render();
+      return;
     }
+    coord2 = `${letterSelect.value}${
+      Number(numberSelect.value) + newShips[newNumber] - 1
+    }`;
   } else {
     const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     const letterI = letters.indexOf(letterSelect.value);
@@ -122,19 +126,21 @@ function newShip() {
       coord2 = ' ';
       letterSelect.value = ' ';
       numberSelect.value = ' ';
-    } else {
-      coord2 = `${letters[letterI + newShips[newNumber] - 1]}${
-        numberSelect.value
-      }`;
+      playerBoard.clearPreview();
+      render();
+      return;
     }
+    coord2 = `${letters[letterI + newShips[newNumber] - 1]}${
+      numberSelect.value
+    }`;
   }
   const previewStatus = playerBoard.preview(coord1, coord2);
   if (previewStatus === false) {
-    playerBoard.clearPreview();
     coord1 = ' ';
     coord2 = ' ';
     letterSelect.value = ' ';
     numberSelect.value = ' ';
+    playerBoard.clearPreview();
   }
   render();
 }
