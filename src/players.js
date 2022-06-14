@@ -41,17 +41,19 @@ class Player {
   // Attacks a spot on the board
   attack(e) {
     if (this.type === 'player') {
-      computerBoard.receiveAttack(e.target.id);
-    } else {
-      const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-      const randLetter = Math.floor(Math.random() * 9);
-      const randNumber = Math.floor(Math.random() * 9);
-      const status = playerBoard.receiveAttack(
-        `${letters[randLetter]}${randNumber + 1}`
-      );
-      if (status) return;
-      computer.attack();
+      const status = computerBoard.receiveAttack(e.target.id);
+      if (status) return true;
+      return false;
     }
+    const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+    const randLetter = Math.floor(Math.random() * 9);
+    const randNumber = Math.floor(Math.random() * 9);
+    const status = playerBoard.receiveAttack(
+      `${letters[randLetter]}${randNumber + 1}`
+    );
+    if (status) return true;
+    computer.attack();
+    return false;
   }
 }
 
