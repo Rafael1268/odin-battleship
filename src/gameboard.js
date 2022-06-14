@@ -123,6 +123,7 @@ class GameBoard {
     const splitCoord = [coordsToSplit.slice(0, 1), coordsToSplit.slice(1, 3)];
     const letter = letters.indexOf(splitCoord[0]);
     if (this.board[letter][splitCoord[1] - 1] === 'X') return false;
+    if (this.board[letter][splitCoord[1] - 1] === 'O') return false;
     if (this.board[letter][splitCoord[1] - 1] === 'E') {
       this.board[letter][splitCoord[1] - 1] = 'O';
       return true;
