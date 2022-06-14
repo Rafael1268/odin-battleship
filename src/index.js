@@ -28,7 +28,8 @@ function gridClick(event) {
   if (event.target.className !== 'grid') return;
   const turn = player.checkTurn();
   if (turn === false) return;
-  player.attack(event);
+  const status = player.attack(event);
+  if (status === false) return;
   const won = computerBoard.shipsSunk();
   if (won) {
     const winScreen = document.getElementById('won');
